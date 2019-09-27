@@ -10,9 +10,15 @@ var players = [
     { name: "Novak Djokovic", rank: 5 },
     { name: "Arthur Ashe", rank: 8 },
     ];
-    
+
 players.forEach(function (elements) {
     if(elements.rank<=10){
     console.log(elements.rank, elements.name);
     }
 });
+
+for (var i = 0; i < players.length; i++) {
+    if(players[i].rank <=10) {
+    console.log(players[i]);
+    }
+}
