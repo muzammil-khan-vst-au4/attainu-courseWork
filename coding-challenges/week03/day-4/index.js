@@ -19,6 +19,6 @@ players.forEach(function (elements) {
 
 for (var i = 0; i < players.length; i++) {
     if(players[i].rank <=10) {
-    console.log(players[i]);
+    console.log(players[i].rank, players[i].name);
     }
 }
