@@ -1,7 +1,7 @@
-function getValue() {
-    var value1 = parseInt(document.getElementById('value1').value);
-    var value2 = parseInt(document.getElementById('value2').value);
-}
+// function getValue() {
+//     var value1 = parseInt(document.getElementById('value1').value);
+//     var value2 = parseInt(document.getElementById('value2').value);
+// }
 
 var add = document.getElementById('add');
 add.addEventListener('click', function() {
