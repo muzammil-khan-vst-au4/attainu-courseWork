@@ -6,11 +6,12 @@ $(document).ready(function() {
         success: function(response) {
 
             $('button').on('click',function() {
+                $('.cities').html("");
                 var input = $('#input').val();
                 console.log(input);
                 var citiesObject=JSON.parse(response);
                 for(var i in citiesObject) {
-                    if(input == citiesObject[i].name.charAt(0)) {
+                    if(input == citiesObject[i].name.charAt(0).toLowerCase()) {
                         var citiesElem = $('<li/>').text(citiesObject[i].name);
                         citiesElem.appendTo('.cities');
                         console.log(citiesObject[i].name);
