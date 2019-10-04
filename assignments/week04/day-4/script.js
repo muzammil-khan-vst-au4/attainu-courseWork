@@ -20,6 +20,7 @@ $(document).ready(function(){
                     location.reload();
                 }else {
                     alert("Incorrect Answer");
+                    location.reload();
                 }
             });
 
