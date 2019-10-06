@@ -27,7 +27,8 @@ $(document).ready(function() {
             $('<div/>').text('Please enter name').appendTo('#alert');
             $('#alert').addClass('alert alert-danger');
         } 
-        else if(!age || age < 15) {            
+        else if(!age || age < 15) {
+            $('#alert').html("");            
             $('<div/>').text('Invalid age').appendTo('#alert');
             $('#alert').addClass('alert alert-danger');
         } else{
@@ -44,11 +45,16 @@ $(document).ready(function() {
                 $('#alert').html("");
                 data.push({"name": name, "age": age});
                 $('<div/>').text('Name added successfully').appendTo('#alert');
-                $('<b>').text(name + ' ').appendTo('#alert');
+                $('<b/>').text(name + ' ').appendTo('#alert');
                 $('<i/>').text(age).appendTo('#alert');
                 $('#alert').addClass('alert alert-success'); 
 
             }
+        }
+        $('ol').html("");
+        for(var j=0; j < data.length; j++) {
+            var list = $('<li/>').html('<b>'+data[j].name+'</b> <i>'+data[j].age+'</i>');
+            list.appendTo('ol');
         }
     })
 });
