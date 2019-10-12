@@ -1,4 +1,4 @@
-function battleground(username, weapon, level) {
+function Battleground(username, weapon, level) {
     this.username = username;
     if(!weapon) {
         this.weapon="knife";
@@ -11,7 +11,7 @@ function battleground(username, weapon, level) {
         this.level = level;
     }
 }
-battleground.prototype.changeWeapon = function(newWeapon) {
+Battleground.prototype.changeWeapon = function(newWeapon) {
     if(newWeapon != "gun" && newWeapon != "knife" && newWeapon != "laser") {
         throw new Error("Only gun knife and laser are allowed");
     } else {
@@ -19,7 +19,7 @@ battleground.prototype.changeWeapon = function(newWeapon) {
     }
     return this.weapon;
 }
-battleground.prototype.changeLevel = function(newLevel) {
+Battleground.prototype.changeLevel = function(newLevel) {
     if(newLevel != "easy" && newLevel != "medium" && newLevel != "difficult") {
         throw new Error("Only easy, medium and difficult levels are available");
     } else {
@@ -27,10 +27,10 @@ battleground.prototype.changeLevel = function(newLevel) {
     }
     return this.level;
 }
-battleground.prototype.attack = function() {
+Battleground.prototype.attack = function() {
     console.log("Atacking opponent with ", this.weapon);
     console.log(this.username,this.weapon,this.level);
 }
 
-var battleOne = new battleground("depay");
+var battleOne = new Battleground("depay");
 battleOne.attack();
