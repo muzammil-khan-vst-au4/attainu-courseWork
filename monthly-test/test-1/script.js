@@ -4,13 +4,17 @@ $(document).ready(function() {
         for(var i=0; i<data.headers.length;i++){
             $('thead').append('<th>'+data.headers[i]+'</th>');
         }
+            $('th:eq(4)').addClass('salary');
             loadTableData(data);
         /* for(var i=0; i<data.users.length;i++) {
             var tableData=$("<tr><td>"+(i+1)+"</td><td>"+data.users[i].name+"</td><td>"+data.users[i].email+"</td><td>"+data.users[i].country+"</td><td>"+data.users[i].salary+"</td><td>"+"<button type='button' class='btn btn-danger'>Delete</button>"+"</td></tr>");   
             $('tbody').append(tableData);
         } */
 
-        $('body').on('click','th',sortColumn('salary'));        
+        //$('body').on('click','.salary',sortColumn('salary'));        
+        $('body').on('click', '.salary', function() {
+            sortColumn('salary');
+        });
         var sortDirection =false;
         function sortColumn(columnName) {
             var dataType = typeof data.users[0][columnName];
@@ -25,6 +29,7 @@ $(document).ready(function() {
             console.log(data.users);
         }
         function loadTableData(data) {
+            $('tbody').html("");
             for(var i=0; i<data.users.length;i++) {
                 var tableData=$("<tr><td>"+(i+1)+"</td><td>"+data.users[i].name+"</td><td>"+data.users[i].email+"</td><td>"+data.users[i].country+"</td><td>"+data.users[i].salary+"</td><td>"+"<button type='button' class='btn btn-danger'>Delete</button>"+"</td></tr>");   
                 $('tbody').append(tableData);
