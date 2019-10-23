@@ -12,6 +12,10 @@ app.get('/find', function(req, res){
     var searchResult = [];
     console.log("Query parameters >>>", req.query);
     var findName = req.query.name;
+    if(!findName){
+        res.send("Invalid query");
+    }
+    else {
     nameArray.forEach(function(element) {
         if(element.substring(0,findName.length) === findName) {
             searchResult.push(element);
@@ -19,7 +23,9 @@ app.get('/find', function(req, res){
     });
     console.log(searchResult);
     res.send(searchResult);
+    }
 });
+
 
 app.listen(PORT, function(){
     console.log("App has started and running on port", PORT);
