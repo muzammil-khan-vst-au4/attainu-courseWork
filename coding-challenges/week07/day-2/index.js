@@ -16,6 +16,7 @@ app.get('/find', function(req, res){
         res.send("Invalid query");
     }
     else {
+    findName = findName.charAt(0).toUpperCase() + findName.slice(1);
     nameArray.forEach(function(element) {
         if(element.substring(0,findName.length) === findName) {
             searchResult.push(element);
