@@ -9,7 +9,7 @@ app.get('/', function(req, res) {
     res.status(200).send("Hello World! This is the homepage.");
 });
 
-app.use('/login/:username/:password', function (req, res, next) {
+app.use('/login/:username?/:password?', function (req, res, next) {
   var user = req.params.username;
   var password = req.params.password;
   if(!user || !password){
@@ -19,24 +19,29 @@ app.use('/login/:username/:password', function (req, res, next) {
       if(element.username == user && element.password == password) {
           res.status(200).send("Login successfull");
       }
+      else {
+          res.send("Invlid username or password");
+      }
   });
   }
   return next();
-}/* , function (req, res, next) {
- 
-  next();
-} */,function(req, res, next) {
+},function(req, res, next) {
     console.log("final function");
     console.log(req.body);
     return next();
 })
 
-app.use('/register/:username/:password/:confirmPassword', function(req,res,next) {
+app.use('/register/:username/:password?/:confirmPassword?', function(req,res,next) {
     var user = req.params.username;
     var password = req.params.password;
     var confirmPassword = req.params.confirmPassword;
-    if(password !== confirmPassword) {
-        res.status(400).status("password and confirm password are not the same")
+    console.log(user,password,confirmPassword);
+    if(!confirmPassword || !password || !user) {
+        res.status(400).send("Invalid credentials");
+    }
+    else if(password != confirmPassword) {
+       // alert("password and confirm password are not the same");
+        res.status("password and confirm password are not the same")
     }else {
         usersArray.forEach(function(element){
             if(element.username == user && element.password == password) {
