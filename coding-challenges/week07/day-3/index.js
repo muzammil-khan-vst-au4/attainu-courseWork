@@ -9,38 +9,24 @@ app.get('/', function(req, res) {
     res.status(200).send("Hello World! This is the homepage.");
 });
 
-app.use('/login/:username?/:password?', function (req, res, next) {
-  var user = req.params.username;
-  var password = req.params.password;
-  if(!user || !password){
-      res.status(400).send("Invalid credentials");
-  } else {
-       usersArray.forEach(function(element){
-      if(element.username == user && element.password == password) {
-          res.status(200).send("Login successfull");
-      }
-      else {
-          res.send("Invlid username or password");
-      }
-  });
-  }
-  return next();
-},function(req, res, next) {
-    console.log("final function");
-    console.log(req.body);
-    return next();
-})
-
-app.use('/register/:username/:password?/:confirmPassword?', function(req,res,next) {
-    var user = req.params.username;
-    var password = req.params.password;
-    var confirmPassword = req.params.confirmPassword;
-    console.log(user,password,confirmPassword);
-    if(!confirmPassword || !password || !user) {
+app.use('/login', function (req, res, next) {
+    var user = req.body.username;
+    var password = req.body.password;
+    if(!user || !password){
         res.status(400).send("Invalid credentials");
     }
-    else if(password != confirmPassword) {
-       // alert("password and confirm password are not the same");
+    return next();      
+})
+
+app.use('/register', function(req,res,next) {
+    var user = req.body.username;
+    var password = req.body.password;
+    var confirmPassword = req.body.confirmPassword;
+    console.log(user,password,confirmPassword);
+    if(!confirmPassword || !password || !user) {
+        res.status(404).send("Invalid credentials");
+    }
+    if(password != confirmPassword) {
         res.status("password and confirm password are not the same")
     }else {
         usersArray.forEach(function(element){
@@ -49,15 +35,26 @@ app.use('/register/:username/:password?/:confirmPassword?', function(req,res,nex
                 return next();
             }
         });
-        var newUser = {username: user, password:password}
-        usersArray.push(newUser);
-        res.status(200).send("New user registered successfully");
+        
         }
     return next();    
-},function(req, res, next) {
-    console.log("final function");
-    console.log(req.body);
-    return next();
+});
+
+
+app.post('/login', function(req, res) {
+    usersArray.forEach(function(element){
+        if(element.username == req.body.username && element.password == req.body.password) {
+        res.status(200).send("Login successfull");
+        }else {
+        res.send("Invlid username or password");
+        }
+    
+    })
+})
+app.post('/register', function(req, res) {
+    var newUser = {username: req.body.username, password: req.body.password}
+    usersArray.push(newUser);
+    res.send("New user registered successfully");
 })
 app.listen(PORT, function(){
     console.log("App has started and running on port", PORT);
