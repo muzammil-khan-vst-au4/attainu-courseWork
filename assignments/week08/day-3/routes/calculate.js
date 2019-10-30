@@ -12,7 +12,7 @@ CalcController.add = function(req, res) {
 			return res.status(500).json({error});
 		} 
 
-        return res.status(200).json({result});
+        return res.status(200).json({num1,num2,result});
     });
 }
 
@@ -26,7 +26,7 @@ CalcController.sub = function(req, res) {
 			return res.status(500).json({error});
 		} 
 
-        return res.status(200).json({result});
+        return res.status(200).json({num1,num2,result});
     });
 }
 
@@ -40,7 +40,7 @@ CalcController.mul = function(req, res) {
 			return res.status(500).json({error});
 		} 
 
-        return res.status(200).json({result});
+        return res.status(200).json({num1,num2,result});
     });
 }
 
@@ -54,7 +54,7 @@ CalcController.div = function(req, res) {
 			return res.status(500).json({error});
 		} 
 
-        return res.status(200).json({result});
+        return res.status(200).json({num1,num2,result});
     });
 }
 
