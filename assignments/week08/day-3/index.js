@@ -10,9 +10,9 @@ var calcRoute = require('./routes/calculate.js');
 
 //routes
 app.post('/add', calcRoute.add);
-/* app.post('/sub', calcRoute.sub);
+app.post('/sub', calcRoute.sub);
 app.post('/mul', calcRoute.mul);
-app.post('/div', calcRoute.div); */
+app.post('/div', calcRoute.div);
 
 
 app.listen(PORT, function() {
