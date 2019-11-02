@@ -21,7 +21,10 @@ var fileStorage = multer.diskStorage({
         ];
         if (allowedTypes.indexOf(mimetype) === -1) {
             return cb('Invalid image format');    
-        } 
+        }
+        Model.storageArray.push({
+        filePath: 'localhost:9090/public/'+ Date.now() + file.originalname,
+        mimetype: file.mimetype}); 
         cb(null, './public');
     },
     filename: function (req, file, cb) {
@@ -43,7 +46,7 @@ var fields = [
 ]
 //routes
 app.post('/upload-files', upload.fields(fields), UploadController.uploadFiles);
-app.get('get-files', UploadController.getFiles);
+app.get('/get-files', UploadController.getFiles);
 
 //create server
 app.listen(PORT, function() {

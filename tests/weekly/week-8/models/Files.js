@@ -1,13 +1,13 @@
 var Model = {};
 Model.storageArray = [];
 
-Model.push = function(callback) {
+/* Model.push = function() {
     this.storageArray.push({
-        filePath:req.url,
+        filePath: req.url,
         mimeType: file.mimeType
     });
-    return callback("")
+    return true;
 
-}        
+}    */     
 
 module.exports = Model;
