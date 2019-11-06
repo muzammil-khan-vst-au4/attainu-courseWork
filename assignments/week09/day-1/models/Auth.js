@@ -8,10 +8,11 @@ var users = [
 Auth.login = function(username, password, callback) {
     var user = null;
     users.forEach(function(value, index) {
-        if(value.username == username) {
-            if(value.password == password){
+        if(value.username == username && value.password == password) {
+            /* if(value.password == password){
                 user = value;
-            }
+            } */
+            user = value;
         }
     });
     if(!user){
