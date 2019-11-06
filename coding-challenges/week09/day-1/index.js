@@ -3,6 +3,7 @@ const app = express();
 const exphbs = require('express-handlebars');
 const PORT = 9090;
 var bookObj = require("./Book.json");	
+const bookRoute = require('./routes/book.js');
 
 app.use(express.json());
 
@@ -22,24 +23,8 @@ app.get('/search', function (req, res){
 	});
  });
 
-var searchResult = [];
-app.get('/search/*', function(req, res) {
-	var search = req.query;
-	var input = search.query;
-	for(var i in bookObj){
-		var inputCapitalise = input.charAt(0).toUpperCase() + input.slice(1);
-		if(inputCapitalise == bookObj[i].language){
-			searchResult.push(bookObj[i]);
-		}
-	}
-	console.log(search, 'of type', typeof search);
-	console.log(searchResult);
-    //res.send("the query is about  " + search.query);
-	res.render('home', {
-		searchResult
-	});
-	searchResult=[];
-})
+//var searchResult = [];
+app.get('/search/*', bookRoute.search);
 
 app.get('/', function(req,res) {
 	var input = req.body.search
@@ -49,11 +34,6 @@ app.get('/', function(req,res) {
 		bookObj
 	});
 })
-
-
-
-
-
 
 // Start the app on pre defined port number
 app.listen(PORT, function() {
