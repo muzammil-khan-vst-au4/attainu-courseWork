@@ -4,6 +4,7 @@ const PORT = 9090;
 var session = require('express-session');
 
 app.use(express.json());
+app.use(express.urlencoded());
 app.use(session({
 	name: 'Somename',
 	secret: 'adfasdfas',
