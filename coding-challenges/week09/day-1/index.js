@@ -6,6 +6,7 @@ var bookObj = require("./Book.json");
 const bookRoute = require('./routes/book.js');
 
 app.use(express.json());
+app.use(express.urlencoded())
 
 // Configure Handlebars
 const hbs = exphbs.create({
