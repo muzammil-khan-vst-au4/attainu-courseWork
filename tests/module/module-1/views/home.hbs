@@ -1,5 +1,5 @@
 <div class="mx-auto">
-	<div class="text-center">
+	{{!-- <div class="text-center">
 		<h1>Book Library</h1> <br><hr>
 		
 		<form method= 'GET' action="/search/*" autocomplete="off">
@@ -8,18 +8,23 @@
             <br>
             <input type="submit" value="Submit" class="search">
     	</form>
-	</div>
+	</div> --}}
 	<table class="table table-striped">
 		<thead>
-			<th>Title</th>
-			<th>Author</th>
-			<th>Country</th>
-			<th>Language</th>
-			<th>Link</th>
-			<th>Pages</th>
-			<th>Year</th>
+			<th>Username</th>
+			<th>Name</th>
+			<th>age</th>
+			<th>City</th>
 		</thead>
 		<tbody>
+			{{#each response}}
+			<tr>
+				<td>{{{this.username}}}</td>
+				<td>{{this.name}}</td>
+				<td>{{this.age}}</td>
+				<td>{{this.city}}</td>
+			</tr>
+			{{/each}}
 			
 		</tbody>
 	</table>
