@@ -33,8 +33,6 @@ MongoClient.connect(url, function(error, client) {
 	})
 	console.log("Connection successfull");
 });
-
-
 function insertdata(data){
 	collection.insertMany(data, function(error, response) {
 		if(error){
@@ -113,9 +111,6 @@ app.delete('/users', function(req, res) {
 		});
 	})
 })
-
-
-
 
 app.listen(PORT, function() {
 	console.log("Application has started and running on port: ", PORT);
