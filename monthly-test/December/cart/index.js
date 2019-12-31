@@ -24,11 +24,11 @@ app.set('view engine', '.hbs');
 
 
 app.get('/', function(req, res) {
-	res.send("Hello World");
+	res.redirect('/cart/retrieve');
 });
 app.post('/cart/add', cartControllers.addItem);
 app.delete('/cart/remove/:itemId',cartControllers.removeItem)
-/*app.put('/cart/update', cartControllers.updateItem)*/
+app.post('/cart/update/:itemId', cartControllers.updateItem)
 app.get('/cart/retrieve', cartControllers.getCart) 
 
 

@@ -32,7 +32,23 @@ class CartController {
          
     }
     static updateItem(req, res) {
+        //let cartId = "5e0b1bb68e47130cf0f35d2b"
+        let itemId = req.body.itemId;
+        console.log(itemId);
+        
+        let itemName= req.body.itemName;
+        let quantity= req.body.quantity;
+        let pricePerItem= req.body.rate;
+        let amount= req.body.quantity * req.body.rate;
 
+        Cart.findByIdAndUpdate({_id : itemId }, { "$set": { "itemName": itemName, "quantity":quantity, "pricePerItem":pricePerItem, "amount":amount}}, { safe: true, multi:true }, function(err, obj){
+            if(err){
+                console.log(err)
+            }else {
+                console.log(obj)
+            }
+        })
+        return res.redirect("/cart/retrieve");
     }
     
     static getCart(req, res) {
