@@ -1,6 +1,6 @@
 const Cart = require('./../models/index').Cart
 //const CartArray = []
-class Cart {
+class CartController {
     static addItem(itemName, quantity, pricePerItem) {
         const newItem = {
             itemName: itemName,
@@ -19,4 +19,4 @@ class Cart {
     }
 }
 
-module.exports = Cart;
+module.exports = CartController;

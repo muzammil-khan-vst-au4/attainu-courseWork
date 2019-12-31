@@ -16,12 +16,12 @@ app.set('view engine', '.hbs');
 
 
 app.get('/', function(req, res) {
-    res.send("hello!");
+    res.render('home');
 });
-app.post('/cart/add', cartControllers.addItem);
+/* app.post('/cart/add', cartControllers.addItem);
 app.delete('/cart/remove',cartControllers.removeItem)
 app.put('/cart/update', cartControllers.updateItem)
-app.get('/cart/retrieve', cartControllers.getCart)
+app.get('/cart/retrieve', cartControllers.getCart) */
 
 
 
