@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
 const db = require('./models/index.js');
-//const controllers = require('./controllers/index.js');
+const cartControllers = require('./controllers/cart.js');
 
 app.use(express.static('public'));
 
@@ -18,17 +18,21 @@ app.set('view engine', '.hbs');
 app.get('/', function(req, res) {
     res.send("hello!");
 });
+app.post('/cart/add', cartControllers.addItem);
+app.delete('/cart/remove',cartControllers.removeItem)
+app.put('/cart/update', cartControllers.updateItem)
+app.get('/cart/retrieve', cartControllers.getCart)
 
 
 
 /* app.listen(3000, function() {
     console.log("Started on port 3000");
 }) */
-
+const PORT = 3000;
 db.connect()
 	.then(function () {
 		app.listen(PORT, function () {
-			console.log("Application has started in environment " + env + " and running on port: ", PORT);
+			console.log("Application has started and running on port: ", PORT);
 			//console.log(process.env);
 		}).on('error', function (error) {
 			console.log("Unable to start app. Error >>>>", error);
