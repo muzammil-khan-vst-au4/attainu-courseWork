@@ -19,12 +19,13 @@ app.set('view engine', '.hbs');
 
 
 app.get('/', function(req, res) {
-    res.render('home');
+	res.send("Hello World");
+	//res.render('home', {cartId: cartId});
 });
 app.post('/cart/add', cartControllers.addItem);
 /* app.delete('/cart/remove',cartControllers.removeItem)
-app.put('/cart/update', cartControllers.updateItem)
-app.get('/cart/retrieve', cartControllers.getCart) */
+app.put('/cart/update', cartControllers.updateItem)*/
+app.get('/cart/retrieve', cartControllers.getCart) 
 
 
 
