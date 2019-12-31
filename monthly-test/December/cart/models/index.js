@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Cart =  require('./Cart');
 const dbURL = 'mongodb://localhost:27017/cart'
 
 function connect() {
@@ -9,6 +10,8 @@ function connect() {
 }
 
 module.exports = {
-    models : {},
+    models : {
+        Cart: Cart
+    },
     connect: connect
 };
