@@ -61,8 +61,8 @@
       <td>{{this.quantity}}</td>
       <td>{{this.pricePerItem}}</td>
       <td>{{this.amount}}</td>
-      <td><button type='button' class='btn btn-danger'>Delete</button></td>
-      <td><button type="button" class="btn btn-outline-info">Edit</button></td>
+      <td><button type='button' class='btn btn-danger' itemid="{{this._id}}">Delete</button></td>
+      <td><button type="button" class="btn btn-outline-info" itemid="{{this._id}}">Edit</button></td>
     </tr>
     {{/each}}
   </tbody>

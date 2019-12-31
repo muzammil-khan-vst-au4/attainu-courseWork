@@ -40,7 +40,7 @@ class CartController {
             if(err){
                 return res.send(err)
             } else {
-                console.log(result[0].items)
+                //console.log(result[0].items)
                 let items = result[0].items
                 let total = 0;
                 items.forEach(element => {
@@ -48,7 +48,7 @@ class CartController {
                     //console.log(total);
                    // return total;
                 });
-                console.log(total);
+                //console.log(total);
             
                 let cartId = "5e0b1bb68e47130cf0f35d2b"
                 res.render('home', {
@@ -60,7 +60,19 @@ class CartController {
         })
 
     }
-    static deleteItem(req, res) {
+    static removeItem(req, res) {
+        let itemId = req.body.itemId;
+        console.log(itemId);
+        let cartId = "5e0b1bb68e47130cf0f35d2b"
+        Cart.update({ _id: cartId }, { "$pull": { "items": { "_id": itemId } }}, { safe: true, multi:true }, function(err, obj){
+            if(err){
+                console.log(err)
+            }else {
+                console.log(obj)
+            }
+
+        })
+        return res.redirect("/cart/retrieve");
 
     }
 }

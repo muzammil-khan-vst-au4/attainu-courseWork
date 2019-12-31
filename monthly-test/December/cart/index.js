@@ -27,8 +27,8 @@ app.get('/', function(req, res) {
 	res.send("Hello World");
 });
 app.post('/cart/add', cartControllers.addItem);
-/* app.delete('/cart/remove',cartControllers.removeItem)
-app.put('/cart/update', cartControllers.updateItem)*/
+app.delete('/cart/remove/:itemId',cartControllers.removeItem)
+/*app.put('/cart/update', cartControllers.updateItem)*/
 app.get('/cart/retrieve', cartControllers.getCart) 
 
 
