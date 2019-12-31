@@ -1,21 +1,32 @@
-const Cart = require('./../models/index').Cart
+const Cart = require('./../models/Cart')
 //const CartArray = []
 class CartController {
-    static addItem(itemName, quantity, pricePerItem) {
+    static addItem(req, res) {
+
         const newItem = {
-            itemName: itemName,
-            quantity: quantity,
-            pricePerItem: pricePerItem,
-            amount: quantity*pricePerItem
+            itemName: req.body.itemName,
+            quantity: req.body.quantity,
+            pricePerItem: req.body.rate,
+            amount: req.body.quantity * req.body.rate
         }
         //CartArray.push(newItem)
-        Cart.create({items: newItem}, function(err, res) {
-            if(error) {
+        Cart.create({items: newItem}, function(err, response) {
+            if(err) {
 				console.log(err);
 				return res.send(err)
 			}
 			return res.send("item added")
         }) 
+    }
+    static updateItem(req, res) {
+
+    }
+    
+    static getItems(req, res) {
+
+    }
+    static deleteItem(req, res) {
+
     }
 }
 

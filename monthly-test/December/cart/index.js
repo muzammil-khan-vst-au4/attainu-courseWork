@@ -4,6 +4,9 @@ const exphbs = require('express-handlebars');
 const db = require('./models/index.js');
 const cartControllers = require('./controllers/cart.js');
 
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 
@@ -18,8 +21,8 @@ app.set('view engine', '.hbs');
 app.get('/', function(req, res) {
     res.render('home');
 });
-/* app.post('/cart/add', cartControllers.addItem);
-app.delete('/cart/remove',cartControllers.removeItem)
+app.post('/cart/add', cartControllers.addItem);
+/* app.delete('/cart/remove',cartControllers.removeItem)
 app.put('/cart/update', cartControllers.updateItem)
 app.get('/cart/retrieve', cartControllers.getCart) */
 

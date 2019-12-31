@@ -4,7 +4,8 @@ const cartSchema = new mongoose.Schema({
     items: [{
         itemName: String,
         quantity: Number,
-        pricePerItem: Number, 
+        pricePerItem: Number,
+        amount: Number 
     }],
     totalAmount: Number
 }, {
