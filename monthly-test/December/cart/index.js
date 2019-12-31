@@ -12,6 +12,11 @@ app.use(express.static('public'));
 
 const hbs = exphbs.create({
 	extname: '.hbs',
+	helpers: {
+        inc: function (value, options) {
+			return parseInt(value) + 1;
+		},
+    }
 });
 app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
@@ -20,7 +25,6 @@ app.set('view engine', '.hbs');
 
 app.get('/', function(req, res) {
 	res.send("Hello World");
-	//res.render('home', {cartId: cartId});
 });
 app.post('/cart/add', cartControllers.addItem);
 /* app.delete('/cart/remove',cartControllers.removeItem)

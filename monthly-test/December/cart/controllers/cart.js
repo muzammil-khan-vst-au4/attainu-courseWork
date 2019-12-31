@@ -1,13 +1,6 @@
 const Cart = require('./../models/Cart')
 //const CartArray = []
 class CartController {
-    /* calculateTotaAmount(items) {
-        let totalAmount =items.reduce(function(total, amount){
-            return total + amount
-          });
-        console.log(totalAmount);
-
-    }  */
     static addItem(req, res) {
         let cartId = req.body.cartId
         console.log(cartId)
@@ -17,8 +10,6 @@ class CartController {
             pricePerItem: req.body.rate,
             amount: req.body.quantity * req.body.rate
         }
-        console.log(newItem)
-        //CartArray.push(newItem)
         Cart.find({}, function(err,  result) {
             if(!result) {
                 Cart.create({items: newItem}, function(err, response) {
