@@ -166,3 +166,8 @@ let linkedList3 = solution.mergeTwoLists(linkedList1, linkedList2);
 linkedList3.print()
 
 
+//time and space complexity of algorithm
+/* 
+    Time complexity - O(n)
+    Space complexity - O(n)
+*/
