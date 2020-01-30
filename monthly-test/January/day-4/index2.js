@@ -144,4 +144,4 @@ class Solution{
 let solution = new Solution();
 console.log(solution.isTreeSame(b1, b2));
 
-// Time Complexity = O(n^2) , Space Complexity = O(1)
+// Time Complexity = O(n^2) , Space Complexity = O(n)
