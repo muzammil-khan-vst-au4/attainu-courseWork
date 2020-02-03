@@ -10,3 +10,6 @@ function uniqueChar(string) {
 }
 
 console.log(uniqueChar("loveleetcode"));
+
+//time complexity - O(n)
+//space complexity - O(n)
