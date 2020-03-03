@@ -5,7 +5,7 @@ class List extends Component {
         const {filteredList} = this.props
         //console.log(filteredList)
         let list = filteredList.length && (filteredList.map((shop,i) => {
-            console.log(shop.isOpen)
+            //console.log(shop.isOpen)
             return (
                 <tr key={i}>
                     <td>{i+1}</td>
