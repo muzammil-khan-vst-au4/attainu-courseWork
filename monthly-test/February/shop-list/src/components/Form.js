@@ -36,13 +36,13 @@ class Form extends Component {
                     name="name"
                     id="name"
                     value={name}
-                    onChange={this.handleChange} className="form-group mb-2" />
+                    onChange={this.handleChange} className="form-group mb-2" required />
                 <label htmlFor="area" className="form-group mb-2">Area</label>
                 <select
                     name="area"
                     id="area"
                     value={area}
-                    onChange={this.handleChange} >
+                    onChange={this.handleChange} required >
                         <option value="Jayanagar">Jayanagar</option>
                         <option value="Basavanagudi">Basavanagudi</option>
                         <option value="JP Nagar">JP Nagar</option>
@@ -57,7 +57,7 @@ class Form extends Component {
                     name="category"
                     id="category"
                     value={category}
-                    onChange={this.handleChange} >
+                    onChange={this.handleChange} required>
                         <option value="Grocery">Grocery</option>
                         <option value="Butcher">Butcher</option>
                         <option value="Baker">Baker</option>
@@ -74,14 +74,14 @@ class Form extends Component {
                     name="opening"
                     id="opening"
                     value={opening}
-                    onChange={this.handleChange} />
+                    onChange={this.handleChange} required/>
                 <label htmlFor="closing" className="form-group mb-2">Closing Date</label>
                 <input
                     type="date"
                     name="closing"
                     id="closing"
                     value={closing}
-                    onChange={this.handleChange} />            
+                    onChange={this.handleChange} required/>            
                 <button className="btn btn-primary">Submit</button>   
             </form>
         )
