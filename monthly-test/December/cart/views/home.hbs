@@ -1,0 +1,115 @@
+<div class="container">
+    <h1 class="text-center">Cart</h1>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addItem">
+    Add Item
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Add new Item to Cart</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form action="/cart/add" method="POST">
+                <input type="hidden" name ="cartId" value="{{cartId}}">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Item Name</label>
+                    <input type="text" class="form-control" name="itemName" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Quantity</label>
+                    <input type="number" class="form-control" name="quantity" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Price Per Item</label>
+                    <input type="number" class="form-control" name="rate" required>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <input type="submit" class="btn btn-primary item-submit">
+                </div>
+            </form>
+        </div>
+        
+        </div>
+    </div>
+    </div>
+
+<hr>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Item Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price Per Item</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data}}
+    <tr>
+      <th scope="row">{{inc @index}}</th>
+      <td>{{this.itemName}}</td>
+      <td>{{this.quantity}}</td>
+      <td>{{this.pricePerItem}}</td>
+      <td>{{this.amount}}</td>
+      <td><button type='button' class='btn btn-danger' itemid="{{this._id}}">Delete</button></td>
+      <td><button type="button" class="btn btn-outline-info" itemid="{{this._id}}" data-toggle="modal" data-target="#editItem">Edit</button></td>
+    </tr>
+    {{/each}}
+  </tbody>
+  <tfoot>
+      <th scope="row"></th>
+      <td></td>
+      <td></td>
+      <td><b> Total Amount ==></b></td>
+      <td>{{total}}</td>
+  </tfoot>
+</table>
+
+<!-- Modal for Edit -->
+    <div class="modal fade" id="editItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Edit Item in Cart</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body edit">
+            <form action="/cart/update" method="POST"> 
+                <input type="hidden" name ="cartId" value="{{cartId}}">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Item Name</label>
+                    <input type="text" class="form-control" name="itemName" placeholder="item" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Quantity</label>
+                    <input type="number" class="form-control" name="quantity" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Price Per Item</label>
+                    <input type="number" class="form-control" name="rate" required >
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <input type="submit" class="btn btn-primary item-submit">
+                </div>
+            </form>
+        </div>
+        
+        </div>
+    </div>
+    </div>
+
+</div>

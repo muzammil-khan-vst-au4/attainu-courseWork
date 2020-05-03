@@ -1,0 +1,30 @@
+<div class="col-md-8 mx-auto">
+	{{!-- <div class="text-center">
+		<form method= 'GET' action="/search/*" autocomplete="off">
+            <br>
+			<input type="text" placeholder="Enter language here" class="input-box" name="query" required>
+            <br>
+            <input type="submit" value="Submit" class="search">
+    	</form>
+	</div> --}}
+	<table class="table table-striped">
+		<thead>
+			<th>Username</th>
+			<th>Name</th>
+			<th>age</th>
+			<th>City</th>
+		</thead>
+		<tbody>
+			{{#each response}}
+			<tr>
+				<td>{{{this.username}}}</td>
+				<td>{{this.name}}</td>
+				<td>{{this.age}}</td>
+				<td>{{this.city}}</td>
+				<td><button type='button' class='btn btn-danger'>Delete</button></td>
+			</tr>
+			{{/each}}
+			
+		</tbody>
+	</table>
+</div>

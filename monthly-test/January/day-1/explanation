@@ -1,0 +1,5 @@
+The solution for moving zeros is implemented using bubble sort.
+Time complexity of the solution is O(n^2), as there are two for loops the code iterates through the array for no. of passes = length of the array.
+However the Space complexity is constant - O(1).
+
+I chose bubble Sort because the other sorts(insertion sort, Selection sort) were also having a time Complexity of O(n^2). 
